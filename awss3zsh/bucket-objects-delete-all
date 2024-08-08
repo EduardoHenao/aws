@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+#check if there is no argument
+if [[ -z "$1" ]]; then
+    echo "no arguments provided"
+    exit 1
+fi
+
+#TODO fix xargs call here
+./bucket-objects-list | xargs -t -L 1 -I {} sh -c "./bucket-object-delete $1 {}"

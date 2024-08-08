@@ -1,0 +1,23 @@
+#!/bin/zsh
+
+#check if there is no argument
+if [[ -z "$1" ]]; then
+    echo "no arguments provided"
+    exit 1
+fi
+
+tempdir='tempdir'
+mkdir $tempdir
+pushd $tempdir
+pwd | echo -L 1 echo
+
+for i in {1..5}; do
+  uuid=$(uuidgen)
+  echo $uuid > "file_$i.txt"
+  echo "Created file_$i.txt with UUID $uuid"
+done
+
+aws s3 sync . 's3://'$1 --region us-east-1
+
+popd
+rm -r $tempdir

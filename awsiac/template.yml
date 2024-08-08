@@ -1,0 +1,9 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: test with simple s3 bucket
+Resources:
+  S3Bucket:
+    #https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_S3.html
+    Type: 'AWS::S3::Bucket'
+    DeletionPolicy: Retain
+    Properties:
+      BucketName: hello-world-789

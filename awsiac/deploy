@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "deploy bucket with AWS CFN"
+
+aws cloudformation deploy \
+--template-file template.yml \
+--stack-name cfn-first-deploy \
+--region us-east-1
